@@ -1,24 +1,24 @@
-import './App.css';
+import "./App.css";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Nav from './Nav';
+import Nav from "./Nav";
 import DogList from "./DogList";
 import DogDetails from "./DogDetails";
-import whiskey from "../whiskey.jpg";
-import duke from "../duke.jpg";
-import perry from "../perry.jpg";
-import tubby from "../tubby.jpg";
+import whiskey from "./whiskey.jpg";
+import duke from "./duke.jpg";
+import perry from "./perry.jpg";
+import tubby from "./tubby.jpg";
 
-function App({dogs}) {
+function App({ dogs }) {
   return (
     <div className="App">
-      <Nav dogs={dogs}/>
+      <Nav dogs={dogs} />
       <Switch>
-        <Route path="/dogs/:name" >
-          <DogDetails />
+        <Route path="/dogs/:name">
+          <DogDetails dogs={dogs} />
         </Route>
-        <Route exact path="/dogs" >
-          <DogList dogs={dogs}/>
+        <Route exact path="/dogs">
+          <DogList dogs={dogs} />
         </Route>
         <Redirect to="/dogs" />
       </Switch>
@@ -35,8 +35,8 @@ App.defaultProps = {
       facts: [
         "Whiskey loves eating popcorn.",
         "Whiskey is a terrible guard dog.",
-        "Whiskey wants to cuddle with you!"
-      ]
+        "Whiskey wants to cuddle with you!",
+      ],
     },
     {
       name: "Duke",
@@ -45,8 +45,8 @@ App.defaultProps = {
       facts: [
         "Duke believes that ball is life.",
         "Duke likes snow.",
-        "Duke enjoys pawing other dogs."
-      ]
+        "Duke enjoys pawing other dogs.",
+      ],
     },
     {
       name: "Perry",
@@ -55,8 +55,8 @@ App.defaultProps = {
       facts: [
         "Perry loves all humans.",
         "Perry demolishes all snacks.",
-        "Perry hates the rain."
-      ]
+        "Perry hates the rain.",
+      ],
     },
     {
       name: "Tubby",
@@ -65,10 +65,10 @@ App.defaultProps = {
       facts: [
         "Tubby is really stupid.",
         "Tubby does not like walks.",
-        "Angelina used to hate Tubby, but claims not to anymore."
-      ]
-    }
-  ]
-}
+        "Angelina used to hate Tubby, but claims not to anymore.",
+      ],
+    },
+  ],
+};
 
 export default App;
