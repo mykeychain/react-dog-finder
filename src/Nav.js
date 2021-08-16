@@ -13,7 +13,6 @@ function Nav({ dogs }) {
           {d.name}
         </NavLink>
       ))}
-      ;
     </nav>
   );
 }

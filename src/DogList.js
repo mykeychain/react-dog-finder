@@ -1,13 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DogDetails from "./DogDetails";
+import { v4 as uuid } from "uuid";
+import "./DogList.css";
 
 function DogList({ dogs }) {
-  return dogs.map((d) => (
-    <Link exact to={`/dogs/${d.name}`}>
-      {d.name}
-    </Link>
-  ));
+  return (
+    <div className="DogList">
+      <ul>Our dogs: 
+        {dogs.map((d) => (
+          <li key={uuid()}>
+            <Link exact to={`/dogs/${d.name}`}>
+            {d.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default DogList;

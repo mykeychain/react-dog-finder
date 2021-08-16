@@ -1,3 +1,7 @@
+.Nav a {
+  margin: 0 3px;
+}
+
 .active {
-  color: blue;
+  color: red;
 }
