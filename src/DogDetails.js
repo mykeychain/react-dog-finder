@@ -12,7 +12,7 @@ function DogDetails({ dogs }) {
         <li>{dog.name}</li>
         <li>{dog.age}</li>
         <li>
-          <img src={dog.src} />
+          <img src={dog.src} alt={dog.name}/>
         </li>
         {dog.facts.map((fact) => (
           <li>{fact}</li>
