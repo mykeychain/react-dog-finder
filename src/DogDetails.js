@@ -1,21 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import "./DogDetails.css";
+import { v4 as uuid } from "uuid";
 
-function DogDetails({ dogs }) {
-  const { name } = useParams();
-  const dogInfo = dogs.filter((d) => d.name === name);
-  const dog = dogInfo[0];
+function DogDetails({ dog }) {
   return (
     <div className="DogDetails">
       <ul>
         <li>{dog.name}</li>
         <li>{dog.age}</li>
         <li>
-          <img src={dog.src} alt={dog.name}/>
+          <img src={dog.src} alt={dog.name} />
         </li>
-        {dog.facts.map((fact) => (
-          <li>{fact}</li>
+        {dog.facts.map((fact, i) => (
+          <li key={i}>{fact}</li>
         ))}
       </ul>
     </div>

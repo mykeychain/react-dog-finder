@@ -1,24 +1,25 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Nav from "./Nav";
 import DogList from "./DogList";
-import DogDetails from "./DogDetails";
 import whiskey from "./whiskey.jpg";
 import duke from "./duke.jpg";
 import perry from "./perry.jpg";
 import tubby from "./tubby.jpg";
+import DogFinder from "./DogFinder";
 
-function App({ dogs }) {
+function App({ initialDogs }) {
+  const [dogs, setDogs] = useState(initialDogs);
   return (
     <div className="App">
       <Nav dogs={dogs} />
       <Switch>
-        <Route path="/dogs/:name">
-          <DogDetails dogs={dogs} />
-        </Route>
         <Route exact path="/dogs">
           <DogList dogs={dogs} />
+        </Route>
+        <Route exact path="/dogs/:name">
+          <DogFinder dogs={dogs} />
         </Route>
         <Redirect to="/dogs" />
       </Switch>
@@ -27,7 +28,7 @@ function App({ dogs }) {
 }
 
 App.defaultProps = {
-  dogs: [
+  initialDogs: [
     {
       name: "Whiskey",
       age: 5,
