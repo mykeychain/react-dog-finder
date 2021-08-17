@@ -1,8 +1,9 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import DogList from "./DogList";
+import AddDog from "./AddDog";
 import whiskey from "./whiskey.jpg";
 import duke from "./duke.jpg";
 import perry from "./perry.jpg";
@@ -11,10 +12,20 @@ import DogFinder from "./DogFinder";
 
 function App({ initialDogs }) {
   const [dogs, setDogs] = useState(initialDogs);
+
+  function add(dog) {
+    setDogs(oldDogs => (
+      [...oldDogs, dog]
+    ));
+  };
+
   return (
     <div className="App">
       <Nav dogs={dogs} />
       <Switch>
+        <Route exact path="/add">
+          <AddDog add={add} />
+        </Route>
         <Route exact path="/dogs">
           <DogList dogs={dogs} />
         </Route>

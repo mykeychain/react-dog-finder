@@ -8,6 +8,7 @@ function DogFinder({ dogs }) {
   const history = useHistory();
 
   if (!dog) {
+    // history.push("/dogs");
     return <Redirect to="/dogs" />;
   }
 
